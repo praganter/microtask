@@ -40,4 +40,8 @@
         </plugins>
     </build>
 
+    <modules>
+        <module>ms-config-server</module>
+    </modules>
+
 </project>
