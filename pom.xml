@@ -45,6 +45,7 @@
         <module>ms-eureka-server</module>
         <module>service-parent</module>
         <module>ms-customer</module>
+        <module>ms-gateway</module>
     </modules>
 
 </project>
