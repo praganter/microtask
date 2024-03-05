@@ -1,4 +1,4 @@
-package dev.batuhanyetgin.msgateway;
+package dev.batuhanyetgin.mssecurityservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,10 +8,10 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableFeignClients
-public class MsGatewayApplication {
+public class MsSecurityServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MsGatewayApplication.class, args);
+        SpringApplication.run(MsSecurityServiceApplication.class, args);
     }
 
 }

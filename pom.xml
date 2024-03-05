@@ -44,7 +44,7 @@
         <module>ms-config-server</module>
         <module>ms-eureka-server</module>
         <module>service-parent</module>
-        <module>ms-customer</module>
+        <module>ms-customer-service</module>
         <module>ms-gateway</module>
     </modules>
 
