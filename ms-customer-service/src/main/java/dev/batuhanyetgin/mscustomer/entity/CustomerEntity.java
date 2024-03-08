@@ -1,5 +1,6 @@
 package dev.batuhanyetgin.mscustomer.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -29,7 +30,7 @@ public class CustomerEntity {
     @NotNull
     @NotBlank
     @Column(name = "password")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
-
 
 }

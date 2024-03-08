@@ -19,26 +19,27 @@ public class CustomerController {
 
     private final CustomerService customerService;
 
-    @PostMapping("/create")
-    public ResponseEntity<String> createCustomer(@RequestBody @Valid RegisterDto customerDto) {
-        customerService.createCustomer(customerDto);
-
-        return ResponseEntity.ok("En azından çalıştım." + customerDto);
-    }
 
     @GetMapping("/getAll")
     public ResponseEntity<List<CustomerDto>> getAllCustomer() {
         return ResponseEntity.ok(customerService.getAllCustomer());
     }
 
+    @PostMapping("/create")
+    private ResponseEntity<String> createCustomer(@RequestBody @Valid RegisterDto customerDto) {
+        customerService.createCustomer(customerDto);
+
+        return ResponseEntity.ok("En azından çalıştım." + customerDto);
+    }
+
     @GetMapping("/getByMail/{email}")
-    public CustomerDto getByMail(@PathVariable String email) throws UserNotFoundException {
+    private CustomerDto getByMail(@PathVariable String email) throws UserNotFoundException {
         return customerService.getByEmail(email);
     }
 
 
     @GetMapping("/isCustomerExist/{email}")
-    public boolean isCustomerExist(@PathVariable String email) {
+    private boolean isCustomerExist(@PathVariable String email) {
         return customerService.isCustomerExist(email);
     }
 }
