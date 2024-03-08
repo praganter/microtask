@@ -12,4 +12,6 @@ public interface AuthService {
     String register(RegisterDto registerDto) throws AuthException;
 
     boolean isTokenExpired(String token);
+
+    String getEmailByToken(String token);
 }

@@ -31,4 +31,9 @@ public class AuthController {
     public boolean isTokenExpired(@PathVariable String token) {
         return authService.isTokenExpired(token);
     }
+
+    @GetMapping("/getEmail/{token}")
+    private String getEmailFromToken(@PathVariable String token) {
+        return authService.getEmailByToken(token);
+    }
 }
