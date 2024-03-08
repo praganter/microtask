@@ -1,36 +1,31 @@
 package dev.batuhanyetgin.msorder.entity;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-import java.util.Set;
 
 @Entity
 @Data
-@Table(name = "\"order\"")
+@Table(name = "\"order_book\"")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class OrderEntity {
+public class OrderBookEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "date")
-    private LocalDateTime orderDate;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "order_id")
+    private OrderEntity order;
 
-    @Column(name = "total_price")
-    private Long totalPrice;
+    @Column(name = "isbn")
+    private Long isbn;
 
-    @Column(name = "customer_id")
-    private Long customer_id;
-
-    @OneToMany(mappedBy = "order")
-    private Set<OrderBookEntity> bookList;
+    @Column(name = "quantity")
+    private int quantity;
 }
