@@ -44,7 +44,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public ResponseOrderDto createOrder(List<CreateOrderDto> createOrderDtoList, String token) throws BookNotFoundException {
-        List<BookDto> bookDtoList = new ArrayList<>();
         List<OrderBookEntity> orderBookEntityList = new ArrayList<>();
 
         OrderEntity newOrder;
@@ -99,9 +98,5 @@ public class OrderServiceImpl implements OrderService {
     private void removeFromStock(BookDto bookDto, int quantity) {
         bookDto.setStock(bookDto.getStock() - quantity);
         bookServiceClient.removeStock(bookDto);
-    }
-
-    private BookDto getBookByIsbn(Long isbn) {
-        return bookServiceClient.getDetails(isbn);
     }
 }

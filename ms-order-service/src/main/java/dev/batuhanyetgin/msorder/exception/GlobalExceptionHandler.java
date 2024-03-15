@@ -13,12 +13,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({Exception.class})
     public ResponseEntity<String> handleAuthException(Exception exception) {
         log.error(exception.getMessage(), exception);
-        return new ResponseEntity<String>(exception.getMessage(), HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler({BookNotFoundException.class})
     public ResponseEntity<String> handleAuthException(BookNotFoundException exception) {
         log.error(exception.getMessage(), exception);
-        return new ResponseEntity<String>(exception.getMessage(), HttpStatus.UNAUTHORIZED);
+        return new ResponseEntity<>(exception.getMessage(), HttpStatus.UNAUTHORIZED);
     }
 }
