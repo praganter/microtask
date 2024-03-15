@@ -33,7 +33,7 @@ public class AuthController {
     }
 
     @GetMapping("/getEmail/{token}")
-    private String getEmailFromToken(@PathVariable String token) {
+    public String getEmailFromToken(@PathVariable String token) {
         return authService.getEmailByToken(token);
     }
 }

@@ -7,6 +7,7 @@ import dev.batuhanyetgin.msbookservice.exception.BookNotFoundException;
 import dev.batuhanyetgin.msbookservice.repository.BookRepository;
 import dev.batuhanyetgin.msbookservice.service.abstruct.BookService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BookServiceImpl implements BookService {
     private final BookRepository bookRepository;
     private final ModelMapper modelMapper;
@@ -40,4 +42,22 @@ public class BookServiceImpl implements BookService {
         }
         return modelMapper.map(bookRepository.getByIsbn(isbn), BookDto.class);
     }
+
+    @Override
+    public boolean isExists(Long isbn) {
+        return bookRepository.existsByIsbn(isbn);
+    }
+
+    @Override
+    public void removeStock(BookDto stockDto) throws BookNotFoundException {
+        BookDto bookDto;
+        try {
+            bookDto = getByIsbn(stockDto.getIsbn());
+        } catch (Exception e) {
+            throw new BookNotFoundException("Book not found with isbn: " + stockDto.getIsbn());
+        }
+        bookRepository.save(modelMapper.map(stockDto, BookEntity.class));
+        log.info("Quantity updated" + bookDto);
+    }
+
 }

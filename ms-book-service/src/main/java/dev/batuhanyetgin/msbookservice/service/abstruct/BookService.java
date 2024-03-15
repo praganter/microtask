@@ -13,4 +13,8 @@ public interface BookService {
     List<BookDto> getAll();
 
     BookDto getByIsbn(Long isbn) throws BookNotFoundException;
+
+    boolean isExists(Long isbn);
+
+    void removeStock(BookDto bookDto) throws BookNotFoundException;
 }

@@ -31,6 +31,7 @@ public class CustomerServiceImpl implements CustomerService {
         }
     }
 
+
     @Override
     public List<CustomerDto> getAllCustomer() {
         return repository.findAll().stream()
@@ -43,6 +44,7 @@ public class CustomerServiceImpl implements CustomerService {
         return repository.existsByEmail(email);
     }
 
+
     @Override
     public CustomerDto getByEmail(String email) throws UserNotFoundException {
         CustomerEntity customerEntity = repository.getByEmail(email);
@@ -51,5 +53,4 @@ public class CustomerServiceImpl implements CustomerService {
         }
         return modelMapper.map(repository.getByEmail(email), CustomerDto.class);
     }
-
 }

@@ -31,4 +31,16 @@ public class BookController {
     public ResponseEntity<BookDto> getDetails(@PathVariable Long isbn) throws BookNotFoundException {
         return ResponseEntity.ok(bookService.getByIsbn(isbn));
     }
+
+    @GetMapping("/isExists/{isbn}")
+    public boolean isExists(@PathVariable Long isbn) {
+        return bookService.isExists(isbn);
+    }
+
+    @PostMapping("/removeStock")
+    public void removeStock(@RequestBody BookDto bookDto) throws BookNotFoundException {
+        bookService.removeStock(bookDto);
+    }
+
+
 }

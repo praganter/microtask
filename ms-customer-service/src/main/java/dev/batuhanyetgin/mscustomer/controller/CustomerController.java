@@ -33,7 +33,7 @@ public class CustomerController {
     }
 
     @GetMapping("/getByMail/{email}")
-    private CustomerDto getByMail(@PathVariable String email) throws UserNotFoundException {
+    public CustomerDto getByMail(@PathVariable String email) throws UserNotFoundException {
         return customerService.getByEmail(email);
     }
 

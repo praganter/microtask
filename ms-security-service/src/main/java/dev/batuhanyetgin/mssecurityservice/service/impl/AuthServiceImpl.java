@@ -34,7 +34,6 @@ public class AuthServiceImpl implements AuthService {
             throw new AuthException("Email already registered.");
         }
         registerDto.setPassword(encodedPassword(registerDto.getPassword()));
-        log.info(registerDto + "send to customer client");
         userRepository.save(modelMapper.map(registerDto, UserEntity.class));
         log.info("User added -> " + registerDto);
         return registerDto.getName() + " successfully registered with " + registerDto.getEmail();
@@ -53,9 +52,9 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public LoginResponseDto login(LoginDto loginDto) throws AuthException {
         CustomerDto customerDto = modelMapper.map(userRepository.getByEmail(loginDto.getEmail()), CustomerDto.class);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
         if (customerDto != null && isPasswordMatch(loginDto.getPassword(), customerDto.getPassword())) {
             String token = tokenManager.generateToken(loginDto.getEmail(), String.valueOf(customerDto.getId()));
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
             log.info("Successfully login.");
             return new LoginResponseDto(customerDto.getName(), sdf.format(new Date()), token);
         } else {

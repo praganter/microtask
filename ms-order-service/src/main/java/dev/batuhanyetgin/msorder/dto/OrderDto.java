@@ -1,6 +1,5 @@
 package dev.batuhanyetgin.msorder.dto;
 
-import dev.batuhanyetgin.mscustomer.entity.CustomerEntity;
 import dev.batuhanyetgin.msorder.entity.OrderBookEntity;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,9 +15,9 @@ public class OrderDto {
 
     private LocalDateTime orderDate;
 
-    private Long totalPrice;
+    private Integer totalPrice;
 
-    private CustomerEntity customer;
+    private Long customer_id;
 
     private List<OrderBookEntity> orderBookList;
 }

@@ -1,4 +1,4 @@
-package dev.batuhanyetgin.msbookservice.dto;
+package dev.batuhanyetgin.msorder.dto;
 
 import lombok.Getter;
 import lombok.Setter;
